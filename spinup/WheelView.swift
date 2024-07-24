@@ -7,47 +7,65 @@
 
 import SwiftUI
 
+struct WheelSection {
+    let title: String
+    let color: Color
+}
+
 struct WheelView: View {
-    var section: [WheelSection]
+    var sections: [WheelSection]
     
-    var body: some View{
+    // 新增屬性, call WheelView(a, b) 直接新增參數 且再view定義型別就可以使用
+    var totalRotation: Double // 新增的属性
+    
+    var body: some View {
         GeometryReader { geometry in
             ZStack {
-                ForEach(0..<self.section.count, id \.self) { index in
+                ForEach(0..<self.sections.count, id: \.self) { index in
                     self.drawSection(geometry: geometry, index: index)
                 }
             }
-            
         }
     }
     
-    // draw section
-    private func drawSection(geometry: GeometryProxy, index: int) -> some View {
-        let angle = 360.0 / Double(section.count)
-        let startAngle = angle * Double(index)
-        let endAngle = startAngle + angle
+    private func drawSection(geometry: GeometryProxy, index: Int) -> some View {
+        // 每個section的角度 360/幾個選擇
+        let anglePerSection = 360.0 / Double(sections.count)
         
+        // 開始的角度 看我的index是第幾個就從第幾個開始畫
+        let startAngle = anglePerSection * Double(index)
+        
+        // 結束角度 就會是 開始的角度 加上每個選擇被分配的角度
+        let endAngle = startAngle + anglePerSection
+        
+        // zstack
         return ZStack {
+            // 定義繪圖的路徑
             Path { path in
+                // view 框架
                 let rect = geometry.frame(in: .local)
+                // 中心點
                 let center = CGPoint(x: rect.midX, y: rect.midY)
-                let redius = min(rect.width, rect.height) / 2
+                // 半徑
+                let radius = min(rect.width, rect.height) / 2
+                
                 path.move(to: center)
-                path.addArc(center: ceter, radius: redius, startAngle: .degrees(startAngle), endAngle: .degrees(endAngle), clockwise: false)
-                    .fill(section[index].color)
-                Text(selection[index].title)
-                    .position(self.textPosition(geometry:geometry, startAngle: startAngle, endAngle: endAngle))
-                    .foregroundColor(.white)
+                path.addArc(center: center, radius: radius, startAngle: .degrees(startAngle), endAngle: .degrees(endAngle), clockwise: false)
             }
+            .fill(sections[index].color)
+            
+            Text(sections[index].title)
+                .rotationEffect(.degrees(-totalRotation)) // 使文字始终保持正面
+                .position(self.textPosition(geometry: geometry, startAngle: startAngle, endAngle: endAngle))
+                .foregroundColor(.white)
         }
     }
     
     private func textPosition(geometry: GeometryProxy, startAngle: Double, endAngle: Double) -> CGPoint {
-        let midAngle = (startAngle+endAngle) / 2
-        let redius = min(geometry.size.width, geometry.size.height) / 2
-        let x = geometry.size.width/2 + redius * 0.7 * CGFloat(cos(midAngle * .pi / 180))
+        let midAngle = (startAngle + endAngle) / 2
+        let radius = min(geometry.size.width, geometry.size.height) / 2
+        let x = geometry.size.width / 2 + radius * 0.7 * CGFloat(cos(midAngle * .pi / 180))
         let y = geometry.size.height / 2 + radius * 0.7 * CGFloat(sin(midAngle * .pi / 180))
-        
         return CGPoint(x: x, y: y)
     }
 }

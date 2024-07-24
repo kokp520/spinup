@@ -20,10 +20,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            WheelView(section: section)
-                .frame(width: 300, height: 300)
+            // custom wheel view
+            WheelView(sections: section, totalRotation: rotation)
+                .frame(width: 300, height: 380)
                 .rotationEffect(.degrees(rotation))
             
+            // button to spin
             Button(action: spinWheel) {
                 Text("Spin")
                     .font(.largeTitle)
@@ -33,8 +35,8 @@ struct ContentView: View {
     }
     
     private func spinWheel() {
-        withAnimation(.easeOut(duration: 5)) {
-            rotation += 360 * 10
+        withAnimation(.easeOut(duration: 2)) {
+            rotation += Double.random(in: 1800...3600)
         }
     }
 }
