@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct WheelSection {
-    let title: String
-    let color: Color
+struct WheelSection:Identifiable {
+    var id = UUID()
+    var title: String
+    var color: Color
 }
 
 struct WheelView: View {
