@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation // Audio player
 
 struct ContentView: View {
     
@@ -13,66 +14,133 @@ struct ContentView: View {
     @StateObject private var viewModel = WheelViewModel()
     // edit view
     @State private var isShowingAddEditView = false
+    @State private var isShowListView = true
     @State private var selectedSection: WheelSection?
     @State private var rotation: Double = 0
     
+    // audio player
+    @State private var audioPlayer: AVAudioPlayer?
+    
     var body: some View {
         VStack {
-            // custom wheel view
-            WheelView(sections: viewModel.sections, totalRotation: rotation)
-                .frame(width: 300, height: 380)
-                .rotationEffect(.degrees(rotation))
-            
-            SpinWheelPointer(pointerColor: .red)
-                .frame(width: 20, height: 100)
-                .offset(y: -400)
-            
-            // button to spin
-            Button(action: spinWheel) {
-                Text("Spin")
-                    .font(.largeTitle)
-                    .padding()
-            }
-            
             // model and edit view
             HStack {
                 Button(action: {
                     selectedSection = nil
                     isShowingAddEditView = true
                 }) {
-                    Text("Add Option")
+                    Text("+")
                         .font(.title2)
                         .padding()
                 }
-                
-                
-                Button(action: saveOptions) {
-                    Text("Save Options")
+                .padding(.leading)
+                Spacer()
+                Button(action: {isShowListView.toggle()}) {
+                    Text("...")
                         .font(.title2)
                         .padding()
                 }
+                .padding(.trailing)
+            }
+            .padding(.top)
+            Spacer()
+            // custom wheel view
+            ZStack {
+                // 陰影
+                Circle()
+                    .fill(Color.black.opacity(0.2))
+                    .frame(width: 340, height: 320) // Adjust the size as needed
+                    .shadow(radius: 99) // Adjust the shadow radius as needed
+                    .blur(radius: 10)
+                    .offset(y: 10) // Move shadow slightly downwards
+                
+                WheelView(sections: viewModel.sections, totalRotation: rotation)
+                    .frame(width: 300, height: 380)
+                    .rotationEffect(.degrees(rotation))
+                
+                SpinWheelPointer(pointerColor: .red)
+                    .frame(width: 20, height: 100)
+                    .offset(y: -150)
             }
             
-            listView()
-            .sheet(isPresented: $isShowingAddEditView) {
-               EditView(viewModel: viewModel, section: $selectedSection)
+            // button to spin
+            Button(action: spinWheel) {
+                Text("SPIN")
+                    .font(.largeTitle)
+                    .padding()
+            }
+            
+            if isShowListView {
+                listView()
+                    .transition(.slide)
+                    .sheet(isPresented: $isShowingAddEditView) {
+                       EditView(viewModel: viewModel, section: $selectedSection)
+                    }
             }
         }
+        .onAppear(){
+            loadSound()
+        }
+        .background(
+            Image("cat")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+                .opacity(0.2)
+        )
     }
     
+    private func loadSound() {
+        guard let soundURL = Bundle.main.url(forResource: "spin", withExtension: "wav") else {
+            print("无法找到音频文件")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.numberOfLoops = -1 // 循环播放
+        } catch {
+            print("初始化音频播放器失败: \(error)")
+        }
+    }
+
+    
     private func spinWheel() {
+        // Play sound
+        audioPlayer?.currentTime = 0 // 重置音效播放位置
+        audioPlayer?.play()
+        // Generate a random rotation amount
+        let randomRotation = Double.random(in: 1800...3600)
+        
+        // Calculate the final rotation angle for the animation
+//        let startRotation = rotation.truncatingRemainder(dividingBy: 360)
+//        let endRotation = (startRotation + randomRotation).truncatingRemainder(dividingBy: 360)
+        
+        // Animate the rotation
         withAnimation(.easeOut(duration: 2)) {
-            rotation += Double.random(in: 1800...3600)
+            rotation += randomRotation
         }
         
-        // calculate selected section after spinning
-        // todo: fix it 
-        let normalizedRotaion = rotation.truncatingRemainder(dividingBy: 360)
-        let sectionCount = viewModel.sections.count
-        let degreesPerSection = 360.0 / Double(sectionCount)
-        let selectedSectionIndex = Int((360 - normalizedRotaion) / degreesPerSection) % sectionCount
-        selectedSection = viewModel.sections[selectedSectionIndex]
-        print("seelct: \(String(describing: selectedSection))")
+        // Calculate the selected section after spinning
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+//            let sectionCount = viewModel.sections.count
+//            let degreesPerSection = 360.0 / Double(sectionCount)
+//            
+//            // Calculate the angle for 90 degrees offset
+//            let offsetAngle = (rotation - startRotation).truncatingRemainder(dividingBy: 360)
+//            
+//            let selectedSectionIndex = Int(offsetAngle / degreesPerSection) % sectionCount
+//            
+//            // Update selected section
+//            selectedSection = viewModel.sections[selectedSectionIndex]
+//            print("select index: \(selectedSectionIndex)")
+//            print("選到了: \(String(describing: selectedSection!.title))")
+            
+            audioPlayer?.stop()
+        }
+        
+
     }
     
     private func saveOptions() {
@@ -109,9 +177,6 @@ struct ContentView: View {
                 }
                 .padding(.vertical, 10) // 增加垂直方向上的間距
             }
-        }
-        .sheet(isPresented: $isShowingAddEditView) {
-            EditView(viewModel: viewModel, section: $selectedSection)
         }
     }
 }

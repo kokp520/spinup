@@ -39,7 +39,6 @@ struct EditView: View {
     
     private func save() {
         if let s = section {
-            print("[debug]save...")
             let updateModel = WheelSection(id: s.id, title: title, color: color)
             viewModel.updateSection(updateModel)
         } else {

@@ -25,8 +25,20 @@ struct WheelView: View {
                     ForEach(0..<self.sections.count, id: \.self) { index in
                         self.drawSection(geometry: geometry, index: index)
                     }
+                    
+                    // Custom center design with "Chu"
+                    Text(":)")
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .background(
+                            LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .blur(radius: 1)
+                        )
+                        .offset(y: -geometry.size.height / 2 + 188)
                 }
-//                SpinWheelPointer(pointerColor: model.pointerColor).offset(x: 0, y: -25)
             }
         }
     }
