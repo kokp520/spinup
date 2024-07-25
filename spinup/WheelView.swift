@@ -15,16 +15,18 @@ struct WheelSection:Identifiable {
 
 struct WheelView: View {
     var sections: [WheelSection]
-    
     // 新增屬性, call WheelView(a, b) 直接新增參數 且再view定義型別就可以使用
     var totalRotation: Double // 新增的属性
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                ForEach(0..<self.sections.count, id: \.self) { index in
-                    self.drawSection(geometry: geometry, index: index)
+            ZStack(alignment: .top) {
+                ZStack {
+                    ForEach(0..<self.sections.count, id: \.self) { index in
+                        self.drawSection(geometry: geometry, index: index)
+                    }
                 }
+//                SpinWheelPointer(pointerColor: model.pointerColor).offset(x: 0, y: -25)
             }
         }
     }
@@ -39,7 +41,6 @@ struct WheelView: View {
         // 結束角度 就會是 開始的角度 加上每個選擇被分配的角度
         let endAngle = startAngle + anglePerSection
         
-        // zstack
         return ZStack {
             // 定義繪圖的路徑
             Path { path in

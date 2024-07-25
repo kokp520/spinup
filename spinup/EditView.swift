@@ -18,30 +18,33 @@ struct EditView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Option Details")) {
+                Section(header: Text("optional detail")) {
                     TextField("Title", text: $title)
                     ColorPicker("Color", selection: $color)
                 }
                 
                 Button(action: save) {
-                    Text("Save")
+                    Text("儲存")
                 }
             }
             .navigationBarTitle(section == nil ? "Add Option" : "Edit Option", displayMode: .inline)
             .onAppear {
-                if let section = section {
-                    title = section.title
-                    color = section.color
+                if let s = section {
+                    title = s.title
+                    color = s.color
                 }
             }
         }
     }
     
     private func save() {
-        if let section = section {
-            viewModel.updateSection(id: section.id, title: title, color: color)
+        if let s = section {
+            print("[debug]save...")
+            let updateModel = WheelSection(id: s.id, title: title, color: color)
+            viewModel.updateSection(updateModel)
         } else {
-            viewModel.addSection(title: title, color: color)
+            let newModel = WheelSection(id: UUID(), title: title, color: color)
+            viewModel.addSection(newModel)
         }
         
         presentationMode.wrappedValue.dismiss()

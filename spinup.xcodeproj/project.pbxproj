@@ -14,6 +14,7 @@
 		52EDF09A2C50C890006B8698 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF0992C50C890006B8698 /* EditView.swift */; };
 		52EDF09C2C50C8AE006B8698 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09B2C50C8AE006B8698 /* WheelView.swift */; };
 		52EDF09E2C5129B9006B8698 /* WheelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */; };
+		52EDF0A02C520287006B8698 /* FortuneWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09F2C520287006B8698 /* FortuneWheel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		52EDF0992C50C890006B8698 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		52EDF09B2C50C8AE006B8698 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 		52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelViewModel.swift; sourceTree = "<group>"; };
+		52EDF09F2C520287006B8698 /* FortuneWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneWheel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				52EDF08D2C50C4C5006B8698 /* ContentView.swift */,
 				52EDF0992C50C890006B8698 /* EditView.swift */,
 				52EDF09B2C50C8AE006B8698 /* WheelView.swift */,
+				52EDF09F2C520287006B8698 /* FortuneWheel.swift */,
 				52EDF08F2C50C4C6006B8698 /* Assets.xcassets */,
 				52EDF0912C50C4C6006B8698 /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 				52EDF09E2C5129B9006B8698 /* WheelViewModel.swift in Sources */,
 				52EDF08E2C50C4C5006B8698 /* ContentView.swift in Sources */,
 				52EDF08C2C50C4C5006B8698 /* spinupApp.swift in Sources */,
+				52EDF0A02C520287006B8698 /* FortuneWheel.swift in Sources */,
 				52EDF09C2C50C8AE006B8698 /* WheelView.swift in Sources */,
 				52EDF09A2C50C890006B8698 /* EditView.swift in Sources */,
 			);
