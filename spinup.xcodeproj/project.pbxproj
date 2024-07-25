@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		527DBBF12C528DEF004FC18C /* spin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 527DBBF02C528DEF004FC18C /* spin.wav */; };
+		527DBBF52C5293F0004FC18C /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 527DBBF42C5293F0004FC18C /* cat.jpg */; };
 		52EDF08C2C50C4C5006B8698 /* spinupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF08B2C50C4C5006B8698 /* spinupApp.swift */; };
 		52EDF08E2C50C4C5006B8698 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF08D2C50C4C5006B8698 /* ContentView.swift */; };
 		52EDF0902C50C4C6006B8698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52EDF08F2C50C4C6006B8698 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		527DBBF02C528DEF004FC18C /* spin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spin.wav; sourceTree = "<group>"; };
+		527DBBF42C5293F0004FC18C /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cat.jpg; path = spinup/cat.jpg; sourceTree = "<group>"; };
 		52EDF0882C50C4C5006B8698 /* spinup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spinup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EDF08B2C50C4C5006B8698 /* spinupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spinupApp.swift; sourceTree = "<group>"; };
 		52EDF08D2C50C4C5006B8698 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 		52EDF07F2C50C4C5006B8698 = {
 			isa = PBXGroup;
 			children = (
+				527DBBF42C5293F0004FC18C /* cat.jpg */,
 				52EDF08A2C50C4C5006B8698 /* spinup */,
 				52EDF0892C50C4C5006B8698 /* Products */,
 			);
@@ -62,6 +67,7 @@
 				52EDF09D2C5129B9006B8698 /* wheelModel.swift */,
 				52EDF08B2C50C4C5006B8698 /* spinupApp.swift */,
 				52EDF08D2C50C4C5006B8698 /* ContentView.swift */,
+				527DBBF02C528DEF004FC18C /* spin.wav */,
 				52EDF0992C50C890006B8698 /* EditView.swift */,
 				52EDF09B2C50C8AE006B8698 /* WheelView.swift */,
 				52EDF09F2C520287006B8698 /* ModelExtension.swift */,
@@ -137,7 +143,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				527DBBF12C528DEF004FC18C /* spin.wav in Resources */,
 				52EDF0932C50C4C6006B8698 /* Preview Assets.xcassets in Resources */,
+				527DBBF52C5293F0004FC18C /* cat.jpg in Resources */,
 				52EDF0902C50C4C6006B8698 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
