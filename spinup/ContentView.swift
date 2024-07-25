@@ -25,7 +25,7 @@ struct ContentView: View {
             
             SpinWheelPointer(pointerColor: .red)
                 .frame(width: 20, height: 100)
-                .offset(y: -100)
+                .offset(y: -400)
             
             // button to spin
             Button(action: spinWheel) {
@@ -44,7 +44,7 @@ struct ContentView: View {
                         .font(.title2)
                         .padding()
                 }
-
+                
                 
                 Button(action: saveOptions) {
                     Text("Save Options")
@@ -53,36 +53,7 @@ struct ContentView: View {
                 }
             }
             
-            List {
-                ForEach(viewModel.sections){ section in
-                    HStack {
-                        Text(section.title)
-                            .foregroundStyle(section.color)
-                        Spacer()
-                        
-                        Button(action: {
-                            selectedSection = section
-                            isShowingAddEditView = true
-                        }){
-                            Text("編輯")
-                                .cornerRadius(5) // Optional: Make the button look nicer
-                        }
-                        .padding(.trailing)
-                        .buttonStyle(BorderlessButtonStyle())
-                        
-                        Button(action: {
-                            if let index = viewModel.sections.firstIndex(where: { $0.id == section.id }) {
-                                viewModel.removeSection(at: index)
-                            }
-                        }) {
-                            Text("刪除")
-                                .cornerRadius(5) // Optional: Make the button look nicer
-                        }
-                        .buttonStyle(BorderlessButtonStyle()) // button邊界
-                    }
-                    .padding(.vertical, 10) // 增加垂直方向上的間距
-                }
-            }
+            listView()
             .sheet(isPresented: $isShowingAddEditView) {
                EditView(viewModel: viewModel, section: $selectedSection)
             }
@@ -95,15 +66,53 @@ struct ContentView: View {
         }
         
         // calculate selected section after spinning
+        // todo: fix it 
         let normalizedRotaion = rotation.truncatingRemainder(dividingBy: 360)
         let sectionCount = viewModel.sections.count
         let degreesPerSection = 360.0 / Double(sectionCount)
         let selectedSectionIndex = Int((360 - normalizedRotaion) / degreesPerSection) % sectionCount
-        selectedSection = viewModel.sections[selectedSectionIndex + 1]
+        selectedSection = viewModel.sections[selectedSectionIndex]
+        print("seelct: \(String(describing: selectedSection))")
     }
     
     private func saveOptions() {
         print("Options saved: \(viewModel.sections)")
+    }
+    
+    // 目前的列表view
+    @ViewBuilder
+    private func listView() -> some View {
+        List {
+            ForEach(viewModel.sections){ section in
+                HStack {
+                    Text(section.title)
+                        .foregroundStyle(section.color)
+                    Spacer()
+                    
+                    Button(action: {
+                        selectedSection = section
+                        isShowingAddEditView = true
+                    }){
+                        Text("編輯").cornerRadius(5) // Optional: Make the button look nicer
+                    }
+                    .padding(.trailing)
+                    .buttonStyle(BorderlessButtonStyle())
+                    
+                    Button(action: {
+                        if let index = viewModel.sections.firstIndex(where: { $0.id == section.id }) {
+                            viewModel.removeSection(at: index)
+                        }
+                    }) {
+                        Text("刪除").cornerRadius(5) // Optional: Make the button look nicer
+                    }
+                    .buttonStyle(BorderlessButtonStyle()) // button邊界
+                }
+                .padding(.vertical, 10) // 增加垂直方向上的間距
+            }
+        }
+        .sheet(isPresented: $isShowingAddEditView) {
+            EditView(viewModel: viewModel, section: $selectedSection)
+        }
     }
 }
 

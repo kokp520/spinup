@@ -39,7 +39,7 @@ struct WheelView: View {
         let startAngle = anglePerSection * Double(index)
         
         // 結束角度 就會是 開始的角度 加上每個選擇被分配的角度
-        let endAngle = startAngle + anglePerSection
+                let endAngle = startAngle + anglePerSection
         
         return ZStack {
             // 定義繪圖的路徑

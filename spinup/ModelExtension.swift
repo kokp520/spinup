@@ -47,6 +47,8 @@ struct Triangle: Shape {
     }
 }
 
+
+// 指針
 @available(macOS 10.15, *)
 @available(iOS 13.0, *)
 struct SpinWheelPointer: View {
@@ -54,7 +56,7 @@ struct SpinWheelPointer: View {
     var body: some View {
         Triangle().frame(width: 50, height: 50)
             .foregroundColor(pointerColor).cornerRadius(24)
-            .rotationEffect(.init(degrees: 0))
+            .rotationEffect(.init(degrees: 180))
             .shadow(color: Color(hex: "212121", alpha: 0.5), radius: 5, x: 0.0, y: 1.0)
     }
 }
