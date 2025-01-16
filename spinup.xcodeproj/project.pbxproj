@@ -20,6 +20,9 @@
 		52EDF0A02C520287006B8698 /* ModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09F2C520287006B8698 /* ModelExtension.swift */; };
 		52F213F22D3945FA004F69B1 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213F12D3945FA004F69B1 /* ListView.swift */; };
 		52F213F72D395454004F69B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213F62D395454004F69B1 /* Config.swift */; };
+		52F213F92D396584004F69B1 /* 1.md in Resources */ = {isa = PBXBuildFile; fileRef = 52F213F82D396584004F69B1 /* 1.md */; };
+		52F213FB2D3965D3004F69B1 /* SpinWheelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213FA2D3965D3004F69B1 /* SpinWheelData.swift */; };
+		52F213FD2D3965E7004F69B1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213FC2D3965E7004F69B1 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		52EDF09F2C520287006B8698 /* ModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExtension.swift; sourceTree = "<group>"; };
 		52F213F12D3945FA004F69B1 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		52F213F62D395454004F69B1 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		52F213F82D396584004F69B1 /* 1.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = 1.md; sourceTree = SOURCE_ROOT; };
+		52F213FA2D3965D3004F69B1 /* SpinWheelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinWheelData.swift; sourceTree = "<group>"; };
+		52F213FC2D3965E7004F69B1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,7 @@
 		52EDF07F2C50C4C5006B8698 = {
 			isa = PBXGroup;
 			children = (
+				52F213F82D396584004F69B1 /* 1.md */,
 				52F213F02D3916EE004F69B1 /* Assets */,
 				52EDF08A2C50C4C5006B8698 /* spinup */,
 				52EDF0892C50C4C5006B8698 /* Products */,
@@ -105,7 +112,8 @@
 		52F213EE2D390FC3004F69B1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */,
+				52F213FA2D3965D3004F69B1 /* SpinWheelData.swift */,
+				52F213FC2D3965E7004F69B1 /* DataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,6 +121,7 @@
 		52F213EF2D390FCA004F69B1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -200,6 +209,7 @@
 				527DBBF12C528DEF004FC18C /* spin.wav in Resources */,
 				52EDF0932C50C4C6006B8698 /* Preview Assets.xcassets in Resources */,
 				527DBBF52C5293F0004FC18C /* cat.jpg in Resources */,
+				52F213F92D396584004F69B1 /* 1.md in Resources */,
 				52EDF0902C50C4C6006B8698 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,8 +224,10 @@
 				52EDF09E2C5129B9006B8698 /* WheelViewModel.swift in Sources */,
 				52EDF08E2C50C4C5006B8698 /* ContentView.swift in Sources */,
 				52EDF08C2C50C4C5006B8698 /* spinupApp.swift in Sources */,
+				52F213FD2D3965E7004F69B1 /* DataManager.swift in Sources */,
 				52F213F22D3945FA004F69B1 /* ListView.swift in Sources */,
 				52EDF0A02C520287006B8698 /* ModelExtension.swift in Sources */,
+				52F213FB2D3965D3004F69B1 /* SpinWheelData.swift in Sources */,
 				52F213F72D395454004F69B1 /* Config.swift in Sources */,
 				52EDF09C2C50C8AE006B8698 /* WheelView.swift in Sources */,
 				52EDF09A2C50C890006B8698 /* EditView.swift in Sources */,
