@@ -9,42 +9,69 @@ struct ListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(viewModel.sections) { section in
-                    HStack {
-                        Text(section.title)
-                            .foregroundStyle(section.color)
+                Section(header: Text("轉盤選項")){
+                    ForEach(viewModel.sections) { section in
+                        HStack {
+                            Text(section.title)
+                                .foregroundStyle(section.color)
 
-                        Spacer()
+                            Spacer()
 
-                        // 編輯按鈕
-                        Button(action: {
-                            selectedSection = section
-                            isShowEditView = true
-                        }) {
-                            Text("編輯")
-                                .foregroundStyle(.blue)
-                        }
-                            .buttonStyle(BorderlessButtonStyle())
-                            .padding(.horizontal, 8)
-
-                        // 刪除按鈕
-                        Button(action: {
-                            if let index = viewModel.sections.firstIndex(where: { $0.id == section.id }) {
-                                viewModel.removeSection(at: index)
+                            // 編輯按鈕
+                            Button(action: {
+                                selectedSection = section
+                                isShowEditView = true
+                            }) {
+                                Text("編輯")
+                                    .foregroundStyle(.blue)
                             }
-                        }) {
-                            Text("刪除")
-                                .foregroundStyle(.red)
+                                .buttonStyle(BorderlessButtonStyle())
+                                .padding(.horizontal, 8)
+
+                            // 刪除按鈕
+                            Button(action: {
+                                if let index = viewModel.sections.firstIndex(where: { $0.id == section.id }) {
+                                    viewModel.removeSection(at: index)
+                                }
+                            }) {
+                                Text("刪除")
+                                    .foregroundStyle(.red)
+                            }
+                                .buttonStyle(BorderlessButtonStyle())
                         }
-                            .buttonStyle(BorderlessButtonStyle())
+                            .padding(.vertical, 10)
                     }
-                        .padding(.vertical, 10)
                 }
+                
+                // section: Contact
+                Section(header: Text("意見回饋")){
+                    Link(destination: URL(string: "https://www.instagram.com/jimwu__/")!){
+                        HStack{
+                            Text("Instagram")
+                            Spacer()
+                            Image(systemName: "link").foregroundColor(.blue)
+                        }
+                    }.foregroundColor(.blue)
+                }
+                
+                // section: donation
+                Section(header: Text("其他"), footer: Text("目前僅支援Apple Pay")){
+                    Button(action:{
+                        // todo: apple pay
+                    }) {
+                        HStack{
+                            Text("支持開發者")
+                            Spacer()
+                            Image(systemName: "heart.fill").foregroundColor(.pink)
+                        }
+                    }
+                }
+                
             }
-                .navigationBarTitle("選項列表", displayMode: .inline)
+                .navigationBarTitle("設定", displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(action: {
-                        dismiss() // close view
+                        dismiss()
                     }) {
                         Image(systemName: "arrow.left")
                     }
