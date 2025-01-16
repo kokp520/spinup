@@ -41,7 +41,7 @@ struct ListView: View {
                         .padding(.vertical, 10)
                 }
             }
-                .navigationTitle("選項列表")
+                .navigationBarTitle("選項列表", displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(action: {
                         dismiss() // close view

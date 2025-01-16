@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: WheelViewModel
     @Binding var section: WheelSection?
 
@@ -18,9 +18,9 @@ struct EditView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("optional detail")) {
-                    TextField("Title", text: $title)
-                    ColorPicker("Color", selection: $color)
+                Section(header: Text("設定")) {
+                    TextField("名稱", text: $title)
+                    ColorPicker("顏色", selection: $color)
                 }
 
                 Button(action: save) {
@@ -28,6 +28,12 @@ struct EditView: View {
                 }
             }
                 .navigationBarTitle(section == nil ? "新增" : "編輯", displayMode: .inline)
+                .navigationBarItems(
+                leading: Button(action: {
+                    dismiss() // close view
+                }) {
+                    Image(systemName: "arrow.left")
+                })
                 .onAppear {
                 if let s = section {
                     title = s.title
@@ -46,6 +52,6 @@ struct EditView: View {
             viewModel.addSection(newModel)
         }
 
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
 }
