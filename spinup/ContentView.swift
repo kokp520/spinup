@@ -91,7 +91,7 @@ struct ContentView: View {
                     )
             }
             .offset(y: Config.Button.offset)
-            .scaleEffect(spinButtonPressed ? 0.95 : 1.0) // 添加按壓效果
+            .scaleEffect(spinButtonPressed ? 0.95 : 1.0)
             .animation(.spring(response: 0.3), value: spinButtonPressed)
         }
         .sheet(item: $activeSheet) { sheet in
@@ -115,9 +115,13 @@ struct ContentView: View {
         .background(
             Image("cat")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
+                .scaledToFill()
+                .frame(
+                    width: UIScreen.main.bounds.width,
+                    height: UIScreen.main.bounds.height
+                )
                 .opacity(0.2)
+                .ignoresSafeArea()
         )
     }
 
