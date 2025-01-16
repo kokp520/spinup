@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		527DBBF12C528DEF004FC18C /* spin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 527DBBF02C528DEF004FC18C /* spin.wav */; };
 		527DBBF52C5293F0004FC18C /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 527DBBF42C5293F0004FC18C /* cat.jpg */; };
+		52963F252D39018000D69F60 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 52963F242D39018000D69F60 /* CollectionViewPagingLayout */; };
 		52EDF08C2C50C4C5006B8698 /* spinupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF08B2C50C4C5006B8698 /* spinupApp.swift */; };
 		52EDF08E2C50C4C5006B8698 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF08D2C50C4C5006B8698 /* ContentView.swift */; };
 		52EDF0902C50C4C6006B8698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52EDF08F2C50C4C6006B8698 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52963F252D39018000D69F60 /* CollectionViewPagingLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +103,9 @@
 			dependencies = (
 			);
 			name = spinup;
+			packageProductDependencies = (
+				52963F242D39018000D69F60 /* CollectionViewPagingLayout */,
+			);
 			productName = spinup;
 			productReference = 52EDF0882C50C4C5006B8698 /* spinup.app */;
 			productType = "com.apple.product-type.application";
@@ -129,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 52EDF07F2C50C4C5006B8698;
+			packageReferences = (
+				52963F232D39018000D69F60 /* XCLocalSwiftPackageReference "../../remoteTools/CollectionViewPagingLayout" */,
+			);
 			productRefGroup = 52EDF0892C50C4C5006B8698 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -368,6 +376,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		52963F232D39018000D69F60 /* XCLocalSwiftPackageReference "../../remoteTools/CollectionViewPagingLayout" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../remoteTools/CollectionViewPagingLayout;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52963F242D39018000D69F60 /* CollectionViewPagingLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CollectionViewPagingLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 52EDF0802C50C4C5006B8698 /* Project object */;
 }

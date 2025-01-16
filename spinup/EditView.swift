@@ -11,10 +11,10 @@ struct EditView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: WheelViewModel
     @Binding var section: WheelSection?
-    
+
     @State private var title: String = ""
     @State private var color: Color = .red
-    
+
     var body: some View {
         NavigationView {
             Form {
@@ -22,13 +22,13 @@ struct EditView: View {
                     TextField("Title", text: $title)
                     ColorPicker("Color", selection: $color)
                 }
-                
+
                 Button(action: save) {
                     Text("儲存")
                 }
             }
-            .navigationBarTitle(section == nil ? "Add Option" : "Edit Option", displayMode: .inline)
-            .onAppear {
+                .navigationBarTitle(section == nil ? "Add Option" : "Edit Option", displayMode: .inline)
+                .onAppear {
                 if let s = section {
                     title = s.title
                     color = s.color
@@ -36,7 +36,7 @@ struct EditView: View {
             }
         }
     }
-    
+
     private func save() {
         if let s = section {
             let updateModel = WheelSection(id: s.id, title: title, color: color)
@@ -45,7 +45,7 @@ struct EditView: View {
             let newModel = WheelSection(id: UUID(), title: title, color: color)
             viewModel.addSection(newModel)
         }
-        
+
         presentationMode.wrappedValue.dismiss()
     }
 }

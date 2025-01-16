@@ -1,9 +1,4 @@
-//
-//  fortuneWheel.swift
-//  spinup
-//
-//  Created by adi on 2024/7/25.
-//
+
 
 import SwiftUI
 
@@ -17,11 +12,11 @@ extension Color {
         Color(hex: "992C4D"), Color(hex: "433589"),
         Color(hex: "4660A8"), Color(hex: "4291C8")
     ]
-    
+
     init(hex: String, alpha: Double = 1) {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if (cString.hasPrefix("#")) { cString.remove(at: cString.startIndex) }
-        
+
         let scanner = Scanner(string: cString)
         scanner.currentIndex = scanner.string.startIndex
         var rgbValue: UInt64 = 0
@@ -29,7 +24,7 @@ extension Color {
         let r = (rgbValue & 0xff0000) >> 16
         let g = (rgbValue & 0xff00) >> 8
         let b = rgbValue & 0xff
-        self.init(.sRGB, red: Double(r) / 0xff, green: Double(g) / 0xff, blue:  Double(b) / 0xff, opacity: alpha)
+        self.init(.sRGB, red: Double(r) / 0xff, green: Double(g) / 0xff, blue: Double(b) / 0xff, opacity: alpha)
     }
 }
 
@@ -47,8 +42,6 @@ struct Triangle: Shape {
     }
 }
 
-
-// 指針
 @available(macOS 10.15, *)
 @available(iOS 13.0, *)
 struct SpinWheelPointer: View {
@@ -65,9 +58,9 @@ struct SpinWheelPointer: View {
 @available(macOS 10.15, *)
 @available(iOS 13.0, *)
 struct SpinWheelCell: Shape {
-    
+
     let startAngle: Double, endAngle: Double
-    
+
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let radius = min(rect.width, rect.height) / 2
