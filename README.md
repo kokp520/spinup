@@ -1,14 +1,7 @@
 # wheel spinpper app 
 
-This is a customizable wheel spinner application developed in swift.
-
-The app allows user to add custom content to the wheel.
-
-This is for learning about ios app develop for myself.
-
-created at 20240724. 颱風假in taiwan.
-
-練習swiftui開發，了解app上架流程以及app開發流程。
+颱風假開發的小app。
+幫助我們可以在選擇晚餐要吃什麼可以更順暢，保護情侶的感情。
 
 ## Features
 
@@ -26,8 +19,13 @@ created at 20240724. 颱風假in taiwan.
 **todo**
 - [ ] 儲存：可以目前已知的參數存儲
 - [ ] ...功能：開啟關閉選項移除，ui轉盤固定，按下...顯示其他儲存的設定
-- [ ] 儲存參數：可以編輯已儲存的設定
+- [ ] 儲存參數：可以編輯已儲存的設定 
 
 1. 圖片資源不大也沒有變動需求, 先直接打包進app
 2. 處理自定義圖片的自動化需求
     a. 把轉盤的圖拆解, 邊界, 每個區塊的線條
+
+## tools 
+
+- format: swimat
+

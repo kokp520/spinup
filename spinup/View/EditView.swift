@@ -27,7 +27,7 @@ struct EditView: View {
                     Text("儲存")
                 }
             }
-                .navigationBarTitle(section == nil ? "Add Option" : "Edit Option", displayMode: .inline)
+                .navigationBarTitle(section == nil ? "新增" : "編輯", displayMode: .inline)
                 .onAppear {
                 if let s = section {
                     title = s.title

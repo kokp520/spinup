@@ -16,13 +16,15 @@
 		52EDF0932C50C4C6006B8698 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52EDF0922C50C4C6006B8698 /* Preview Assets.xcassets */; };
 		52EDF09A2C50C890006B8698 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF0992C50C890006B8698 /* EditView.swift */; };
 		52EDF09C2C50C8AE006B8698 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09B2C50C8AE006B8698 /* WheelView.swift */; };
-		52EDF09E2C5129B9006B8698 /* wheelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09D2C5129B9006B8698 /* wheelModel.swift */; };
+		52EDF09E2C5129B9006B8698 /* WheelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */; };
 		52EDF0A02C520287006B8698 /* ModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09F2C520287006B8698 /* ModelExtension.swift */; };
+		52F213F22D3945FA004F69B1 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213F12D3945FA004F69B1 /* ListView.swift */; };
+		52F213F72D395454004F69B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213F62D395454004F69B1 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		527DBBF02C528DEF004FC18C /* spin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spin.wav; sourceTree = "<group>"; };
-		527DBBF42C5293F0004FC18C /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cat.jpg; path = spinup/cat.jpg; sourceTree = "<group>"; };
+		527DBBF42C5293F0004FC18C /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
 		52EDF0882C50C4C5006B8698 /* spinup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spinup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EDF08B2C50C4C5006B8698 /* spinupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spinupApp.swift; sourceTree = "<group>"; };
 		52EDF08D2C50C4C5006B8698 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,8 +32,10 @@
 		52EDF0922C50C4C6006B8698 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		52EDF0992C50C890006B8698 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		52EDF09B2C50C8AE006B8698 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
-		52EDF09D2C5129B9006B8698 /* wheelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wheelModel.swift; sourceTree = "<group>"; };
+		52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelViewModel.swift; sourceTree = "<group>"; };
 		52EDF09F2C520287006B8698 /* ModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExtension.swift; sourceTree = "<group>"; };
+		52F213F12D3945FA004F69B1 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		52F213F62D395454004F69B1 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +53,7 @@
 		52EDF07F2C50C4C5006B8698 = {
 			isa = PBXGroup;
 			children = (
-				527DBBF42C5293F0004FC18C /* cat.jpg */,
+				52F213F02D3916EE004F69B1 /* Assets */,
 				52EDF08A2C50C4C5006B8698 /* spinup */,
 				52EDF0892C50C4C5006B8698 /* Products */,
 			);
@@ -66,12 +70,13 @@
 		52EDF08A2C50C4C5006B8698 /* spinup */ = {
 			isa = PBXGroup;
 			children = (
-				52EDF09D2C5129B9006B8698 /* wheelModel.swift */,
+				52F213F32D39541B004F69B1 /* Config */,
+				52F213EF2D390FCA004F69B1 /* ViewModel */,
+				52F213EE2D390FC3004F69B1 /* Model */,
+				52F213ED2D390FBB004F69B1 /* View */,
 				52EDF08B2C50C4C5006B8698 /* spinupApp.swift */,
 				52EDF08D2C50C4C5006B8698 /* ContentView.swift */,
 				527DBBF02C528DEF004FC18C /* spin.wav */,
-				52EDF0992C50C890006B8698 /* EditView.swift */,
-				52EDF09B2C50C8AE006B8698 /* WheelView.swift */,
 				52EDF09F2C520287006B8698 /* ModelExtension.swift */,
 				52EDF08F2C50C4C6006B8698 /* Assets.xcassets */,
 				52EDF0912C50C4C6006B8698 /* Preview Content */,
@@ -85,6 +90,47 @@
 				52EDF0922C50C4C6006B8698 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		52F213ED2D390FBB004F69B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52EDF0992C50C890006B8698 /* EditView.swift */,
+				52EDF09B2C50C8AE006B8698 /* WheelView.swift */,
+				52F213F12D3945FA004F69B1 /* ListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52F213EE2D390FC3004F69B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		52F213EF2D390FCA004F69B1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		52F213F02D3916EE004F69B1 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				527DBBF42C5293F0004FC18C /* cat.jpg */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		52F213F32D39541B004F69B1 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				52F213F62D395454004F69B1 /* Config.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,10 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52EDF09E2C5129B9006B8698 /* wheelModel.swift in Sources */,
+				52EDF09E2C5129B9006B8698 /* WheelViewModel.swift in Sources */,
 				52EDF08E2C50C4C5006B8698 /* ContentView.swift in Sources */,
 				52EDF08C2C50C4C5006B8698 /* spinupApp.swift in Sources */,
+				52F213F22D3945FA004F69B1 /* ListView.swift in Sources */,
 				52EDF0A02C520287006B8698 /* ModelExtension.swift in Sources */,
+				52F213F72D395454004F69B1 /* Config.swift in Sources */,
 				52EDF09C2C50C8AE006B8698 /* WheelView.swift in Sources */,
 				52EDF09A2C50C890006B8698 /* EditView.swift in Sources */,
 			);
