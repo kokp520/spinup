@@ -27,14 +27,12 @@ struct EditView: View {
                     Text("儲存")
                 }
             }
-                .navigationBarTitle(section == nil ? "新增" : "編輯", displayMode: .inline)
-                .navigationBarItems(
-                leading: Button(action: {
-                    dismiss() // close view
-                }) {
-                    Image(systemName: "arrow.left")
+            .navigationBarTitle(section == nil ? "新增" : "編輯", displayMode: .inline)
+            .navigationBarItems(
+                leading: MenuButton(style: .text("返回")) {
+                    dismiss()
                 })
-                .onAppear {
+            .onAppear {
                 if let s = section {
                     title = s.title
                     color = s.color

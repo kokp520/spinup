@@ -9,7 +9,7 @@ struct ListView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("轉盤選項")){
+                Section(header: Text("轉盤選項")) {
                     ForEach(viewModel.sections) { section in
                         HStack {
                             Text(section.title)
@@ -25,8 +25,8 @@ struct ListView: View {
                                 Text("編輯")
                                     .foregroundStyle(.blue)
                             }
-                                .buttonStyle(BorderlessButtonStyle())
-                                .padding(.horizontal, 8)
+                            .buttonStyle(BorderlessButtonStyle())
+                            .padding(.horizontal, 8)
 
                             // 刪除按鈕
                             Button(action: {
@@ -37,51 +37,46 @@ struct ListView: View {
                                 Text("刪除")
                                     .foregroundStyle(.red)
                             }
-                                .buttonStyle(BorderlessButtonStyle())
+                            .buttonStyle(BorderlessButtonStyle())
                         }
-                            .padding(.vertical, 10)
+                        .padding(.vertical, 10)
                     }
                 }
-                
+
                 // section: Contact
-                Section(header: Text("意見回饋")){
-                    Link(destination: URL(string: "https://www.instagram.com/jimwu__/")!){
-                        HStack{
+                Section(header: Text("意見回饋")) {
+                    Link(destination: URL(string: "https://www.instagram.com/jimwu__/")!) {
+                        HStack {
                             Text("Instagram")
                             Spacer()
                             Image(systemName: "link").foregroundColor(.blue)
                         }
                     }.foregroundColor(.blue)
                 }
-                
+
                 // section: donation
-                Section(header: Text("其他"), footer: Text("目前僅支援Apple Pay")){
-                    Button(action:{
-                        // todo: apple pay
+                Section(header: Text("其他"), footer: Text("目前僅支援Apple Pay")) {
+                    Button(action: {
+                        // TODO: apple pay
                     }) {
-                        HStack{
+                        HStack {
                             Text("支持開發者")
                             Spacer()
                             Image(systemName: "heart.fill").foregroundColor(.pink)
                         }
                     }
                 }
-                
             }
-                .navigationBarTitle("設定", displayMode: .inline)
-                .navigationBarItems(
-                    leading: Button(action: {
-                        dismiss()
-                    }) {
-                        Image(systemName: "arrow.left")
-                    }
-                ,
+            .navigationBarTitle("設定", displayMode: .inline)
+            .navigationBarItems(
+                leading: MenuButton(style: .text("返回")) {
+                    dismiss()
+                },
+
                 trailing:
-                    Button(action: {
+                MenuButton(style: .text("新增")) {
                     selectedSection = nil
                     isShowEditView = true
-                }) {
-                    Image(systemName: "plus")
                 }
             )
         }
