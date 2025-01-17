@@ -1,10 +1,10 @@
-import SwiftUI
 import AVFoundation
+import SwiftUI
 
 enum ActiveSheet: Identifiable {
     case list
     case edit
-    
+
     var id: Int {
         switch self {
         case .list: return 0
@@ -24,27 +24,66 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {
+                // 這邊練習一下尾隨閉包
+                // note:
+                // 方式 1：標準參數寫法
+                // MenuButton(style: .icon("plus"), action: {
+                //    selectedSection = nil
+                //    activeSheet = .edit
+                // })
+
+                // 方式 2：尾隨閉包寫法（推薦）
+                // MenuButton(style: .icon("plus")) {
+                //    selectedSection = nil
+                //    activeSheet = .edit
+                // }
+
+                // ❌ 錯誤：不能同時使用參數和尾隨閉包
+                // why? Swift 的尾隨閉包規則：
+                // 1. 最後一個參數如果是閉包，可以使用尾隨閉包語法
+                // 2. 不能同時使用參數形式和尾隨閉包形式傳遞同一個參數
+                // MenuButton(style: .icon("plus"), action: {
+                //    selectedSection = nil
+                // }) {
+                //    activeSheet = .edit
+                // }
+
+                // 原實現邏輯 業務邏輯
+//                Button(action: {
+//                    selectedSection = nil
+//                    activeSheet = .edit
+//                }) {
+//                    Image(systemName: "plus").padding().foregroundColor(.black)
+//                }
+//                .padding(.leading)
+
+                // 完成
+                MenuButton(style: .icon("plus")) {
                     selectedSection = nil
                     activeSheet = .edit
-                }) {
-                    Image(systemName: "plus").padding()
                 }
                 .padding(.leading)
-                
+
                 Spacer()
-                
-                Button(action: {
+
+                MenuButton(style: .dots) {
                     activeSheet = .list
-                }) {
-                    Text("...")
-                        .font(.title2)
-                        .padding()
                 }
                 .padding(.trailing)
+
+//                Button(action: {
+//                    activeSheet = .list
+//                }) {
+//                    Text("...")
+//                        .font(.title2)
+//                        .padding()
+//                        .foregroundColor(.black)
+//                        .bold()
+//                }
+                
             }
             .padding(.top)
-            
+
             Spacer()
 
             ZStack {
@@ -72,11 +111,13 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .frame(width: Config.Button.width, height: Config.Button.height)
                     .background(
-                        LinearGradient(
-                            gradient: Gradient(colors: [.blue, .purple]),
-                            startPoint: .leading,
-                            endPoint: .trailing
-                        )
+                        //                        LinearGradient(
+                        ////                            gradient: Gradient(colors: [.blue, .purple]),
+//                            gradient: Gradient(colors: [.gray, .black]),
+//                            startPoint: .leading,
+//                            endPoint: .trailing
+//                        )
+                        .black
                     )
                     .cornerRadius(Config.Button.cornerRadius)
                     .shadow(
@@ -112,17 +153,18 @@ struct ContentView: View {
         .onAppear {
             loadSound()
         }
-        .background(
-            Image("cat")
-                .resizable()
-                .scaledToFill()
-                .frame(
-                    width: UIScreen.main.bounds.width,
-                    height: UIScreen.main.bounds.height
-                )
-                .opacity(0.2)
-                .ignoresSafeArea()
-        )
+        // NOTE: 如果加上這些參數 基本上能自適應介面滿版
+//        .background(
+//            Image("cat")
+//                .resizable()
+//                .scaledToFill()
+//                .frame(
+//                    width: UIScreen.main.bounds.width,
+//                    height: UIScreen.main.bounds.height
+//                )
+//                .opacity(0.2)
+//                .ignoresSafeArea()
+//        )
     }
 
     private func loadSound() {
@@ -142,7 +184,7 @@ struct ContentView: View {
     private func spinWheel() {
         audioPlayer?.currentTime = 0
         audioPlayer?.play()
-        let randomRotation = Double.random(in: 1800...3600)
+        let randomRotation = Double.random(in: 1800 ... 3600)
 
         withAnimation(.easeOut(duration: 2)) {
             rotation += randomRotation

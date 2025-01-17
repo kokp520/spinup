@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-struct WheelSection: Identifiable {
-    var id = UUID()
-    var title: String
-    var color: Color
-}
-
 struct WheelView: View {
     var sections: [WheelSection]
     // 新增屬性, call WheelView(a, b) 直接新增參數 且再view定義型別就可以使用
