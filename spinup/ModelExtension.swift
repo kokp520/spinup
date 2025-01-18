@@ -41,9 +41,9 @@ extension Color {
         let g = Float(components[1])
         let b = Float(components[2])
         return String(format: "#%02lX%02lX%02lX",
-             lroundf(r * 255),
-             lroundf(g * 255),
-             lroundf(b * 255))
+                      lroundf(r * 255),
+                      lroundf(g * 255),
+                      lroundf(b * 255))
     }
 }
 

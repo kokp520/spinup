@@ -26,7 +26,7 @@ struct MenuButton: View {
             switch style {
             case .dots:
                 HStack(spacing: 4) {
-                    ForEach(0..<3) { _ in
+                    ForEach(0 ..< 3) { _ in
                         Circle()
                             .fill(Color.black.opacity(0.8))
                             .frame(width: 4, height: 4)
@@ -53,7 +53,7 @@ struct MenuButton: View {
                     y: 2
                 )
         )
-        .buttonStyle(ScaleButtonStyle())  // 添加按鈕縮放效果
+        .buttonStyle(ScaleButtonStyle()) // 添加按鈕縮放效果
         .onAppear {
             prepareHaptics()
         }

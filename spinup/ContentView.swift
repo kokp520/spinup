@@ -80,7 +80,6 @@ struct ContentView: View {
 //                        .foregroundColor(.black)
 //                        .bold()
 //                }
-                
             }
             .padding(.top)
 

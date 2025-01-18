@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct WheelSection: Codable, Identifiable {
     let id: UUID
     var title: String
@@ -23,7 +22,6 @@ struct WheelSection: Codable, Identifiable {
         case id, title, colorHex
     }
     
-    
     // 自定義實現, TODO: 這邊目前還是沒有很明白
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -33,7 +31,7 @@ struct WheelSection: Codable, Identifiable {
     }
     
     // from 後面不用: , 原因待查 差別 TODO:
-    init(from decoder:Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)

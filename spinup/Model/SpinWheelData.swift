@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SectionData: Codable{
+struct SectionData: Codable {
     var title: String
     var color: String
 }

@@ -46,7 +46,7 @@ class WheelViewModel: ObservableObject {
             userDefaults.set(encoded, forKey: sectionsKey)
         }
     }
-    
+
     // other
     // 資料驗證
     private func isValid(_ section: WheelSection) -> Bool {
