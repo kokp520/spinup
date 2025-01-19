@@ -58,9 +58,10 @@ struct ListView: View {
                 Section(header: Text("其他"), footer: Text("目前僅支援Apple Pay")) {
                     Button(action: {
                         // TODO: apple pay
+                        showApplePayAlert()
                     }) {
                         HStack {
-                            Text("支持開發者")
+                            Text("支持開發者").foregroundColor(.blue)
                             Spacer()
                             Image(systemName: "heart.fill").foregroundColor(.pink)
                         }
@@ -79,6 +80,23 @@ struct ListView: View {
                     isShowEditView = true
                 }
             )
+        }
+    }
+
+    func showApplePayAlert() {
+        // 獲取目前的最上層UIViewController，兼容iOS 15+
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootViewController = scene.windows.first?.rootViewController
+        {
+            let alert = UIAlertController(
+                title: "提醒",
+                message: "Apple Pay 支援服務商尚未開放, 你的支持我收到了",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
+
+            // 顯示提示框
+            rootViewController.present(alert, animated: true, completion: nil)
         }
     }
 }
