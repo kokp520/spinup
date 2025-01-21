@@ -1,5 +1,44 @@
 # develop log book
 
+**20240121**
+
+
+swift 幣包的action寫法, 避免閉包
+```swift
+// 這邊練習一下尾隨閉包
+                // note:
+                // 方式 1：標準參數寫法
+                // MenuButton(style: .icon("plus"), action: {
+                //    selectedSection = nil
+                //    activeSheet = .edit
+                // })
+
+                // 方式 2：尾隨閉包寫法（推薦）
+                // MenuButton(style: .icon("plus")) {
+                //    selectedSection = nil
+                //    activeSheet = .edit
+                // }
+
+                // ❌ 錯誤：不能同時使用參數和尾隨閉包
+                // why? Swift 的尾隨閉包規則：
+                // 1. 最後一個參數如果是閉包，可以使用尾隨閉包語法
+                // 2. 不能同時使用參數形式和尾隨閉包形式傳遞同一個參數
+                // MenuButton(style: .icon("plus"), action: {
+                //    selectedSection = nil
+                // }) {
+                //    activeSheet = .edit
+                // }
+
+                // 原實現邏輯 業務邏輯
+//                Button(action: {
+//                    selectedSection = nil
+//                    activeSheet = .edit
+//                }) {
+//                    Image(systemName: "plus").padding().foregroundColor(.black)
+//                }
+//                .padding(.leading)
+```
+
 **20241003**
 - [x] icon設定
 - [x] 上傳到開發手機測試
