@@ -52,7 +52,12 @@ struct ContentView: View {
                     .blur(radius: 10)
                     .offset(y: Config.Wheel.offset)
 
-                WheelView(sections: viewModel.sections, totalRotation: rotation)
+//                WheelView(sections: viewModel.sections, totalRotation: rotation)
+//                    .frame(width: 300, height: 380)
+//                    .rotationEffect(.degrees(rotation))
+//                    .offset(y: Config.Wheel.offset)
+                // level 2
+                PixelWheelView(sections: viewModel.sections, totalRotation: rotation)
                     .frame(width: 300, height: 380)
                     .rotationEffect(.degrees(rotation))
                     .offset(y: Config.Wheel.offset)
@@ -84,7 +89,6 @@ struct ContentView: View {
             .scaleEffect(spinButtonPressed ? 0.95 : 1.0)
             .animation(.spring(response: 0.3), value: spinButtonPressed)
         }
-        .preferredColorScheme(.light)
         .sheet(item: $activeSheet) { sheet in
             switch sheet {
             case .list:
