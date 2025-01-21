@@ -84,6 +84,7 @@ struct ContentView: View {
             .scaleEffect(spinButtonPressed ? 0.95 : 1.0)
             .animation(.spring(response: 0.3), value: spinButtonPressed)
         }
+        .preferredColorScheme(.light)
         .sheet(item: $activeSheet) { sheet in
             switch sheet {
             case .list:
@@ -102,7 +103,6 @@ struct ContentView: View {
         .onAppear {
             loadSound()
         }
-//        .background(.white)
     }
 
     private func loadSound() {
@@ -135,5 +135,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .preferredColorScheme(.light)
+        .preferredColorScheme(.dark)
 }

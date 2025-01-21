@@ -28,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		521FB9722D3F8B2C008F21CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		527DBBF02C528DEF004FC18C /* spin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spin.wav; sourceTree = "<group>"; };
 		527DBBF42C5293F0004FC18C /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
 		52BD93E52D3AB79E00980E14 /* WheelSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelSection.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		52EDF08A2C50C4C5006B8698 /* spinup */ = {
 			isa = PBXGroup;
 			children = (
+				521FB9722D3F8B2C008F21CB /* Info.plist */,
 				52BD93E72D3AC5F100980E14 /* Extension */,
 				52F213F32D39541B004F69B1 /* Config */,
 				52F213EF2D390FCA004F69B1 /* ViewModel */,
@@ -384,6 +386,7 @@
 				DEVELOPMENT_TEAM = 2XMTD5UT4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = spinup/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -415,6 +418,7 @@
 				DEVELOPMENT_TEAM = 2XMTD5UT4S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = spinup/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

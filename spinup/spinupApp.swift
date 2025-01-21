@@ -12,6 +12,7 @@ struct spinupApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.light) // 強制整個應用為淺色模式
         }
     }
 }
