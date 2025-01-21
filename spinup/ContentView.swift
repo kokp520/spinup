@@ -20,13 +20,12 @@ struct ContentView: View {
     @State private var rotation: Double = 0
     @State private var audioPlayer: AVAudioPlayer?
     @State private var spinButtonPressed = false
+    
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         VStack {
             HStack {
-                
-
-                // 完成
                 MenuButton(style: .icon("plus")) {
                     selectedSection = nil
                     activeSheet = .edit
@@ -35,20 +34,10 @@ struct ContentView: View {
 
                 Spacer()
 
-                MenuButton(style: .dots) {
+                MenuButton(style: .icon("slider.horizontal.3")) {
                     activeSheet = .list
                 }
                 .padding(.trailing)
-
-//                Button(action: {
-//                    activeSheet = .list
-//                }) {
-//                    Text("...")
-//                        .font(.title2)
-//                        .padding()
-//                        .foregroundColor(.black)
-//                        .bold()
-//                }
             }
             .padding(.top)
 
@@ -78,15 +67,7 @@ struct ContentView: View {
                     .font(.title.bold())
                     .foregroundColor(.white)
                     .frame(width: Config.Button.width, height: Config.Button.height)
-                    .background(
-                        //                        LinearGradient(
-                        ////                            gradient: Gradient(colors: [.blue, .purple]),
-//                            gradient: Gradient(colors: [.gray, .black]),
-//                            startPoint: .leading,
-//                            endPoint: .trailing
-//                        )
-                        .black
-                    )
+                    .background(.black)
                     .cornerRadius(Config.Button.cornerRadius)
                     .shadow(
                         color: .black.opacity(0.3),
@@ -121,18 +102,7 @@ struct ContentView: View {
         .onAppear {
             loadSound()
         }
-        // NOTE: 如果加上這些參數 基本上能自適應介面滿版
-//        .background(
-//            Image("cat")
-//                .resizable()
-//                .scaledToFill()
-//                .frame(
-//                    width: UIScreen.main.bounds.width,
-//                    height: UIScreen.main.bounds.height
-//                )
-//                .opacity(0.2)
-//                .ignoresSafeArea()
-//        )
+//        .background(.white)
     }
 
     private func loadSound() {
@@ -165,4 +135,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .preferredColorScheme(.light
+        )
 }

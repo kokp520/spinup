@@ -18,6 +18,9 @@ struct MenuButton: View {
         self.action = action
     }
     
+    @State private var hapticsPrepared = false
+    private let generator = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
         Button(action: {
             playHaptic() // 2️⃣ 先執行觸感
@@ -25,53 +28,39 @@ struct MenuButton: View {
         }) {
             switch style {
             case .dots:
-                HStack(spacing: 4) {
-                    ForEach(0 ..< 3) { _ in
-                        Circle()
-                            .fill(Color.black.opacity(0.8))
-                            .frame(width: 4, height: 4)
-                    }
-                }
+                Text(".")
             case .text(let label):
                 Text(label)
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(.black)
             case .icon(let sf):
                 Image(systemName: sf)
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.system(size: 25, weight: .medium))
                     .foregroundColor(.black)
             }
         }
         .padding(12)
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(Color.gray.opacity(0.1))
-                .shadow(
-                    color: Color.black.opacity(0.05),
-                    radius: 4,
-                    x: 0,
-                    y: 2
-                )
-        )
-        .buttonStyle(ScaleButtonStyle()) // 添加按鈕縮放效果
+        .buttonStyle(ScaleButtonStyle())
         .onAppear {
             prepareHaptics()
+            generator.prepare()
         }
     }
     
     private func prepareHaptics() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         
+        if hapticsPrepared { return }
         do {
             engine = try CHHapticEngine()
             try engine?.start()
+            hapticsPrepared = true
         } catch {
             print("Haptics error: \(error.localizedDescription)")
         }
     }
     
     private func playHaptic() {
-        let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
     }
 }
@@ -109,30 +98,8 @@ struct MenuButtonPreview: View {
         .padding()
 }
 
-#Preview("Menu Button Variants") {
-    VStack(spacing: 30) {
-        // 淺色模式
-        MenuButton(action: {})
-            .previewDisplayName("預設")
-        
-        // 深色模式
-        MenuButton(action: {})
-            .preferredColorScheme(.dark)
-            .previewDisplayName("深色模式")
-        
-        // 不同尺寸
-        HStack(spacing: 20) {
-            MenuButton(action: {})
-                .scaleEffect(0.8)
-                .previewDisplayName("小")
-            
-            MenuButton(action: {})
-                .previewDisplayName("中")
-            
-            MenuButton(action: {})
-                .scaleEffect(1.2)
-                .previewDisplayName("大")
-        }
-    }
-    .padding()
+#Preview("dark") {
+    MenuButtonPreview()
+        .preferredColorScheme(.dark)
+        .previewDisplayName("Dark Mode")
 }
