@@ -69,10 +69,9 @@ swift 幣包的action寫法, 避免閉包
 
 - Product > build 執行
 
+## 專案管理
 
-## tools 
-
-- format: swimat
+![alt text](image-3.png)
 
 ## 參考資料
 [doc](https://ithelp.ithome.com.tw/articles/10330724)

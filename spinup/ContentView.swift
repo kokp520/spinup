@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var rotation: Double = 0
     @State private var audioPlayer: AVAudioPlayer?
     @State private var spinButtonPressed = false
-    
+
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
@@ -135,6 +135,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .preferredColorScheme(.light
-        )
+        .preferredColorScheme(.light)
 }
