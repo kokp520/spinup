@@ -3,6 +3,7 @@ import SwiftUI
 struct PixelWheelView: View {
     var sections: [WheelSection]
     var totalRotation: Double
+    var isShaking: Bool
 
     var body: some View {
         GeometryReader { geometry in
@@ -25,19 +26,6 @@ struct PixelWheelView: View {
                     drawSection(geometry: geometry, index: index)
                 }
 
-                // 轉盤的光澤效果
-                Circle()
-                    .stroke(
-                        RadialGradient(
-                            gradient: Gradient(colors: [Color.white.opacity(0.6), Color.clear]),
-                            center: .topLeading,
-                            startRadius: 0,
-                            endRadius: geometry.size.width / 1.5
-                        ),
-                        lineWidth: 20
-                    )
-                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
-
                 // 中心設計（立體感+反光）
                 Circle()
                     .fill(
@@ -53,11 +41,11 @@ struct PixelWheelView: View {
                         Circle()
                             .stroke(
                                 LinearGradient(
-                                    gradient: Gradient(colors: [.white.opacity(0.7), .clear]),
+                                    gradient: Gradient(colors: [.white.opacity(0.4), .clear]),
                                     startPoint: .top,
                                     endPoint: .bottom
                                 ),
-                                lineWidth: 5
+                                lineWidth: 3
                             )
                     )
                     .overlay(
@@ -67,6 +55,11 @@ struct PixelWheelView: View {
                     )
                     .shadow(color: .black.opacity(0.5), radius: 5)
             }
+            .rotationEffect(isShaking ? .degrees(2) : .degrees(0)) // 微抖動
+            .animation(
+                isShaking ? Animation.easeInOut(duration: 0.1).repeatForever(autoreverses: true) : .default,
+                value: isShaking
+            )
         }
     }
 
@@ -96,6 +89,23 @@ struct PixelWheelView: View {
                 startPoint: .top,
                 endPoint: .bottom
             )
+        )
+        .overlay(
+            Path { path in
+                let rect = geometry.frame(in: .local)
+                let center = CGPoint(x: rect.midX, y: rect.midY)
+                let radius = min(rect.width, rect.height) / 2
+
+                path.move(to: center)
+                path.addArc(
+                    center: center,
+                    radius: radius,
+                    startAngle: .degrees(startAngle),
+                    endAngle: .degrees(endAngle),
+                    clockwise: false
+                )
+            }
+            .stroke(Color.white, lineWidth: 5) // 貼紙風格白邊框
         )
         .overlay(
             Text(sections[index].title)

@@ -53,7 +53,7 @@ struct ContentView: View {
                     .offset(y: Config.Wheel.offset)
                 
                 // level 2
-                PixelWheelView(sections: viewModel.sections, totalRotation: rotation)
+                PixelWheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
                     .frame(width: 300, height: 380)
                     .rotationEffect(.degrees(rotation))
                     .offset(y: Config.Wheel.offset)
