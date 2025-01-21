@@ -55,7 +55,7 @@ struct PixelWheelView: View {
                     )
                     .shadow(color: .black.opacity(0.5), radius: 5)
             }
-            .rotationEffect(isShaking ? .degrees(2) : .degrees(0)) // 微抖動
+            .rotationEffect(isShaking ? .degrees(90) : .degrees(0)) // 微抖動
             .animation(
                 isShaking ? Animation.easeInOut(duration: 0.1).repeatForever(autoreverses: true) : .default,
                 value: isShaking
@@ -122,5 +122,22 @@ struct PixelWheelView: View {
         let x = geometry.size.width / 2 + radius * CGFloat(cos(midAngle * .pi / 180))
         let y = geometry.size.height / 2 + radius * CGFloat(sin(midAngle * .pi / 180))
         return CGPoint(x: x, y: y)
+    }
+}
+
+
+struct PixelWheelView_Previews: PreviewProvider {
+    static var previews: some View {
+        PixelWheelView(
+            sections: [
+                WheelSection(title: "Section 1", color: .red),
+                WheelSection(title: "Section 2", color: .blue),
+                WheelSection(title: "Section 3", color: .green),
+                WheelSection(title: "Section 4", color: .purple)
+            ],
+            totalRotation: 150,
+            isShaking: true
+        )
+        .frame(width: 300, height: 300)
     }
 }

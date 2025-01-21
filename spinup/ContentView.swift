@@ -52,15 +52,17 @@ struct ContentView: View {
                     .blur(radius: 10)
                     .offset(y: Config.Wheel.offset)
                 
-                // level 2
                 PixelWheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
                     .frame(width: 300, height: 380)
                     .rotationEffect(.degrees(rotation))
                     .offset(y: Config.Wheel.offset)
-
-//                SpinWheelPointer(pointerColor: .red)
-//                    .frame(width: 20, height: 100)
-//                    .offset(y: -150 + Config.Wheel.offset)
+                
+                // 其他種wheel
+//                WheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
+//                    .frame(width: 300, height: 380)
+//                    .rotationEffect(.degrees(rotation))
+//                    .offset(y: Config.Wheel.offset)
+                
                 Pointer(pointerColor: .red, isShaking: isShaking)
                     .frame(width: 20, height: 100)
                     .offset(y: -150 + Config.Wheel.offset)
@@ -71,7 +73,12 @@ struct ContentView: View {
                     .font(.title.bold())
                     .foregroundColor(.white)
                     .frame(width: Config.Button.width, height: Config.Button.height)
-                    .background(.black)
+                    .background( ZStack {
+                        Color.black // 按鈕底色
+                        RoundedRectangle(cornerRadius: Config.Button.cornerRadius)
+                            .stroke(.white, lineWidth: 10) // 貼紙風格白邊框
+                            .shadow(color: .black.opacity(0.2), radius: 3, x: 5, y: 5) // 邊框陰影
+                    })
                     .cornerRadius(Config.Button.cornerRadius)
                     .shadow(
                         color: .black.opacity(0.3),

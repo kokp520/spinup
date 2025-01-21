@@ -1,38 +1,77 @@
-//
-//  SwiftUIView.swift
-//  spinup
-//
-//  Created by adi on 2024/7/24.
-//
-
 import SwiftUI
 
 struct WheelView: View {
     var sections: [WheelSection]
-    // 新增屬性, call WheelView(a, b) 直接新增參數 且再view定義型別就可以使用
-    var totalRotation: Double // 新增的属性
+    var totalRotation: Double
+    var isShaking: Bool
 
     var body: some View {
         GeometryReader { geometry in
-            ZStack(alignment: .top) {
-                ZStack {
-                    ForEach(0 ..< self.sections.count, id: \.self) { index in
-                        self.drawSection(geometry: geometry, index: index)
-                    }
-
-                    // Custom center design with "Chu"
-                    Text(":)")
-                        .font(.system(size: 12, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .background(
-                            LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
-                                .clipShape(Circle())
-                                .shadow(radius: 10)
-                                .blur(radius: 1)
+            ZStack {
+                // 背景陰影（環繞轉盤）
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            gradient: Gradient(colors: [.black.opacity(0.8), .gray.opacity(0.2)]),
+                            center: .center,
+                            startRadius: 50,
+                            endRadius: geometry.size.width / 2
                         )
-                        .offset(y: -geometry.size.height / 2 + 188)
+                    )
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .shadow(color: .black.opacity(0.6), radius: 15, x: 0, y: 10)
+
+                // 轉盤區域
+                ForEach(0 ..< sections.count, id: \.self) { index in
+                    drawSection(geometry: geometry, index: index)
                 }
+
+                // 轉盤的光澤效果
+                Circle()
+                    .stroke(
+                        RadialGradient(
+                            gradient: Gradient(colors: [Color.white.opacity(0.6), Color.clear]),
+                            center: .topLeading,
+                            startRadius: 0,
+                            endRadius: geometry.size.width / 1.5
+                        ),
+                        lineWidth: 20
+                    )
+                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
+
+                // 中心設計（立體感+反光）
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            gradient: Gradient(colors: [.yellow, .orange]),
+                            center: .center,
+                            startRadius: 10,
+                            endRadius: geometry.size.width * 0.15
+                        )
+                    )
+                    .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
+                    .overlay(
+                        Circle()
+                            .stroke(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.white.opacity(0.7), .clear]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                ),
+                                lineWidth: 5
+                            )
+                    )
+                    .overlay(
+                        Text("SPIN")
+                            .font(.title3.bold())
+                            .foregroundColor(.white)
+                    )
+                    .shadow(color: .black.opacity(0.5), radius: 5)
+                    .rotationEffect(isShaking ? .degrees(90) : .degrees(0)) // 微抖動
+                    .animation(
+                        isShaking ? Animation.easeInOut(duration: 0.1).repeatForever(autoreverses: true) : .default,
+                        value: isShaking
+                    )
             }
         }
     }
@@ -41,30 +80,59 @@ struct WheelView: View {
         let anglePerSection = 360.0 / Double(sections.count)
         let startAngle = anglePerSection * Double(index)
         let endAngle = startAngle + anglePerSection
+        let sectionColor = sections[index].color
 
-        return ZStack {
-            Path { path in
-                let rect = geometry.frame(in: .local)
-                let center = CGPoint(x: rect.midX, y: rect.midY)
-                let radius = min(rect.width, rect.height) / 2
+        return Path { path in
+            let rect = geometry.frame(in: .local)
+            let center = CGPoint(x: rect.midX, y: rect.midY)
+            let radius = min(rect.width, rect.height) / 2
 
-                path.move(to: center)
-                path.addArc(center: center, radius: radius, startAngle: .degrees(startAngle), endAngle: .degrees(endAngle), clockwise: false)
-            }
-            .fill(sections[index].color)
-
-            Text(sections[index].title)
-                .rotationEffect(.degrees(-totalRotation)) // 使文字始终保持正面
-                .position(self.textPosition(geometry: geometry, startAngle: startAngle, endAngle: endAngle))
-                .foregroundColor(.white)
+            path.move(to: center)
+            path.addArc(
+                center: center,
+                radius: radius,
+                startAngle: .degrees(startAngle),
+                endAngle: .degrees(endAngle),
+                clockwise: false
+            )
         }
+        .fill(
+            LinearGradient(
+                gradient: Gradient(colors: [sectionColor, sectionColor.opacity(0.7)]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
+        .overlay(
+            Text(sections[index].title)
+                .font(.caption)
+                .foregroundColor(.white)
+                .rotationEffect(.degrees(-totalRotation)) // 保持文字正向
+                .position(positionForText(geometry: geometry, startAngle: startAngle, endAngle: endAngle))
+        )
     }
 
-    private func textPosition(geometry: GeometryProxy, startAngle: Double, endAngle: Double) -> CGPoint {
+    private func positionForText(geometry: GeometryProxy, startAngle: Double, endAngle: Double) -> CGPoint {
         let midAngle = (startAngle + endAngle) / 2
-        let radius = min(geometry.size.width, geometry.size.height) / 2
-        let x = geometry.size.width / 2 + radius * 0.7 * CGFloat(cos(midAngle * .pi / 180))
-        let y = geometry.size.height / 2 + radius * 0.7 * CGFloat(sin(midAngle * .pi / 180))
+        let radius = min(geometry.size.width, geometry.size.height) * 0.4
+        let x = geometry.size.width / 2 + radius * CGFloat(cos(midAngle * .pi / 180))
+        let y = geometry.size.height / 2 + radius * CGFloat(sin(midAngle * .pi / 180))
         return CGPoint(x: x, y: y)
+    }
+}
+
+struct WheelView_Previews: PreviewProvider {
+    static var previews: some View {
+        WheelView(
+            sections: [
+                WheelSection(title: "Section 1", color: .red),
+                WheelSection(title: "Section 2", color: .blue),
+                WheelSection(title: "Section 3", color: .green),
+                WheelSection(title: "Section 4", color: .purple)
+            ],
+            totalRotation: 150,
+            isShaking: true
+        )
+        .frame(width: 300, height: 300)
     }
 }
