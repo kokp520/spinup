@@ -55,7 +55,7 @@ struct PixelWheelView: View {
                     )
                     .shadow(color: .black.opacity(0.5), radius: 5)
             }
-            .rotationEffect(isShaking ? .degrees(90) : .degrees(0)) // 微抖動
+            .rotationEffect(isShaking ? .degrees(10) : .degrees(0)) // 微抖動
             .animation(
                 isShaking ? Animation.easeInOut(duration: 0.1).repeatForever(autoreverses: true) : .default,
                 value: isShaking

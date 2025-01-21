@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var rotation: Double = 0
     @State private var audioPlayer: AVAudioPlayer?
     @State private var spinButtonPressed = false
-    
+
     @State private var isShaking: Bool = false
 
     var body: some View {
@@ -51,18 +51,18 @@ struct ContentView: View {
                     .shadow(radius: 99)
                     .blur(radius: 10)
                     .offset(y: Config.Wheel.offset)
-                
+
                 PixelWheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
                     .frame(width: 300, height: 380)
                     .rotationEffect(.degrees(rotation))
                     .offset(y: Config.Wheel.offset)
-                
+
                 // 其他種wheel
 //                WheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
 //                    .frame(width: 300, height: 380)
 //                    .rotationEffect(.degrees(rotation))
 //                    .offset(y: Config.Wheel.offset)
-                
+
                 Pointer(pointerColor: .red, isShaking: isShaking)
                     .frame(width: 20, height: 100)
                     .offset(y: -150 + Config.Wheel.offset)
@@ -73,7 +73,7 @@ struct ContentView: View {
                     .font(.title.bold())
                     .foregroundColor(.white)
                     .frame(width: Config.Button.width, height: Config.Button.height)
-                    .background( ZStack {
+                    .background(ZStack {
                         Color.black // 按鈕底色
                         RoundedRectangle(cornerRadius: Config.Button.cornerRadius)
                             .stroke(.white, lineWidth: 10) // 貼紙風格白邊框
