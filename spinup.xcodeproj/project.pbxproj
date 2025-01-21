@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		521FB9742D3F8D77008F21CB /* PixelWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521FB9732D3F8D77008F21CB /* PixelWheel.swift */; };
+		521FB9762D3F8F90008F21CB /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521FB9752D3F8F90008F21CB /* Pointer.swift */; };
 		527DBBF12C528DEF004FC18C /* spin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 527DBBF02C528DEF004FC18C /* spin.wav */; };
 		527DBBF52C5293F0004FC18C /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 527DBBF42C5293F0004FC18C /* cat.jpg */; };
 		52963F252D39018000D69F60 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 52963F242D39018000D69F60 /* CollectionViewPagingLayout */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		521FB9722D3F8B2C008F21CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		521FB9732D3F8D77008F21CB /* PixelWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelWheel.swift; sourceTree = "<group>"; };
+		521FB9752D3F8F90008F21CB /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
 		527DBBF02C528DEF004FC18C /* spin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = spin.wav; sourceTree = "<group>"; };
 		527DBBF42C5293F0004FC18C /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
 		52BD93E52D3AB79E00980E14 /* WheelSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelSection.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				52EDF09B2C50C8AE006B8698 /* WheelView.swift */,
 				52F213F12D3945FA004F69B1 /* ListView.swift */,
 				521FB9732D3F8D77008F21CB /* PixelWheel.swift */,
+				521FB9752D3F8F90008F21CB /* Pointer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				52EDF09C2C50C8AE006B8698 /* WheelView.swift in Sources */,
 				521FB9742D3F8D77008F21CB /* PixelWheel.swift in Sources */,
 				52EDF09A2C50C890006B8698 /* EditView.swift in Sources */,
+				521FB9762D3F8F90008F21CB /* Pointer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

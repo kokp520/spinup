@@ -20,8 +20,8 @@ struct ContentView: View {
     @State private var rotation: Double = 0
     @State private var audioPlayer: AVAudioPlayer?
     @State private var spinButtonPressed = false
-
-    @Environment(\.colorScheme) var colorScheme
+    
+    @State private var isShaking: Bool = false
 
     var body: some View {
         VStack {
@@ -51,18 +51,17 @@ struct ContentView: View {
                     .shadow(radius: 99)
                     .blur(radius: 10)
                     .offset(y: Config.Wheel.offset)
-
-//                WheelView(sections: viewModel.sections, totalRotation: rotation)
-//                    .frame(width: 300, height: 380)
-//                    .rotationEffect(.degrees(rotation))
-//                    .offset(y: Config.Wheel.offset)
+                
                 // level 2
                 PixelWheelView(sections: viewModel.sections, totalRotation: rotation)
                     .frame(width: 300, height: 380)
                     .rotationEffect(.degrees(rotation))
                     .offset(y: Config.Wheel.offset)
 
-                SpinWheelPointer(pointerColor: .red)
+//                SpinWheelPointer(pointerColor: .red)
+//                    .frame(width: 20, height: 100)
+//                    .offset(y: -150 + Config.Wheel.offset)
+                Pointer(pointerColor: .red, isShaking: isShaking)
                     .frame(width: 20, height: 100)
                     .offset(y: -150 + Config.Wheel.offset)
             }
@@ -124,6 +123,7 @@ struct ContentView: View {
     }
 
     private func spinWheel() {
+        isShaking = true
         audioPlayer?.currentTime = 0
         audioPlayer?.play()
         let randomRotation = Double.random(in: 1800 ... 3600)
@@ -133,11 +133,11 @@ struct ContentView: View {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             audioPlayer?.stop()
+            isShaking = false
         }
     }
 }
 
 #Preview {
     ContentView()
-        .preferredColorScheme(.dark)
 }

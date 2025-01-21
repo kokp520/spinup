@@ -7,40 +7,65 @@ struct PixelWheelView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                // 背景陰影
+                // 背景陰影（環繞轉盤）
                 Circle()
                     .fill(
                         RadialGradient(
-                            gradient: Gradient(colors: [.gray.opacity(0.3), .black.opacity(0.8)]),
+                            gradient: Gradient(colors: [.black.opacity(0.8), .gray.opacity(0.2)]),
                             center: .center,
                             startRadius: 50,
-                            endRadius: 200
+                            endRadius: geometry.size.width / 2
                         )
                     )
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .shadow(color: .black.opacity(0.5), radius: 10, x: 0, y: 5)
+                    .shadow(color: .black.opacity(0.6), radius: 15, x: 0, y: 10)
 
                 // 轉盤區域
                 ForEach(0..<sections.count, id: \.self) { index in
                     drawSection(geometry: geometry, index: index)
                 }
 
-                // 中心設計
+                // 轉盤的光澤效果
+                Circle()
+                    .stroke(
+                        RadialGradient(
+                            gradient: Gradient(colors: [Color.white.opacity(0.6), Color.clear]),
+                            center: .topLeading,
+                            startRadius: 0,
+                            endRadius: geometry.size.width / 1.5
+                        ),
+                        lineWidth: 20
+                    )
+                    .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
+
+                // 中心設計（立體感+反光）
                 Circle()
                     .fill(
-                        LinearGradient(
+                        RadialGradient(
                             gradient: Gradient(colors: [.yellow, .orange]),
-                            startPoint: .top,
-                            endPoint: .bottom
+                            center: .center,
+                            startRadius: 10,
+                            endRadius: geometry.size.width * 0.15
                         )
                     )
                     .frame(width: geometry.size.width * 0.2, height: geometry.size.width * 0.2)
+                    .overlay(
+                        Circle()
+                            .stroke(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.white.opacity(0.7), .clear]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                ),
+                                lineWidth: 5
+                            )
+                    )
                     .overlay(
                         Text("SPIN")
                             .font(.title3.bold())
                             .foregroundColor(.white)
                     )
-                    .shadow(radius: 5)
+                    .shadow(color: .black.opacity(0.5), radius: 5)
             }
         }
     }
