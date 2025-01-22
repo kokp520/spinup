@@ -12,7 +12,6 @@ struct MenuButton: View {
     @State private var engine: CHHapticEngine?
     let action: () -> Void // 1️⃣ 存儲用戶定義的動作
     let style: Style
-    
     init(style: Style = .dots, action: @escaping () -> Void) {
         self.style = style
         self.action = action

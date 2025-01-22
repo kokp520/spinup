@@ -1,10 +1,3 @@
-//
-//  edit view.swift
-//  spinup
-//
-//  Created by adi on 2024/7/24.
-//
-
 import SwiftUI
 
 struct EditView: View {
@@ -13,8 +6,12 @@ struct EditView: View {
     @Binding var section: WheelSection?
 
     @State private var title: String = ""
-    @State private var color: Color = .red
-
+    @State private var color: Color = Color(
+        red: Double.random(in: 0...1),
+        green: Double.random(in: 0...1),
+        blue: Double.random(in: 0...1)
+    )
+    
     var body: some View {
         NavigationView {
             Form {
@@ -40,7 +37,7 @@ struct EditView: View {
             }
         }
     }
-
+    
     private func save() {
         if let s = section {
             let updateModel = WheelSection(id: s.id, title: title, color: color)
@@ -49,7 +46,5 @@ struct EditView: View {
             let newModel = WheelSection(id: UUID(), title: title, color: color)
             viewModel.addSection(newModel)
         }
-
-        dismiss()
     }
 }

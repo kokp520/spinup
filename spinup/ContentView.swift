@@ -14,7 +14,7 @@ enum ActiveSheet: Identifiable {
 }
 
 struct ContentView: View {
-    @StateObject private var viewModel = WheelViewModel()
+    @ObservedObject var viewModel: WheelViewModel
     @State private var activeSheet: ActiveSheet?
     @State private var selectedSection: WheelSection?
     @State private var rotation: Double = 0
@@ -58,10 +58,10 @@ struct ContentView: View {
                     .offset(y: Config.Wheel.offset)
 
                 // 其他種wheel
-//                WheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
-//                    .frame(width: 300, height: 380)
-//                    .rotationEffect(.degrees(rotation))
-//                    .offset(y: Config.Wheel.offset)
+                WheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
+                    .frame(width: 300, height: 380)
+                    .rotationEffect(.degrees(rotation))
+                    .offset(y: Config.Wheel.offset)
 
                 Pointer(pointerColor: .red, isShaking: isShaking)
                     .frame(width: 20, height: 100)
@@ -146,5 +146,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: WheelViewModel())
 }
