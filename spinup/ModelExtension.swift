@@ -45,6 +45,27 @@ extension Color {
                       lroundf(g * 255),
                       lroundf(b * 255))
     }
+
+    static func random() -> Color {
+        Color(
+            red: Double.random(in: 0...1),
+            green: Double.random(in: 0...1),
+            blue: Double.random(in: 0...1)
+        )
+    }
+}
+
+// 表單相關的工具類
+struct FormUtilities {
+    struct WheelForm {
+        @Binding var title: String
+        @Binding var color: Color
+        
+        mutating func reset() { // mutating會修改閉包的值
+            title = ""
+            color = .random()
+        }
+    }
 }
 
 @available(macOS 10.15, *)

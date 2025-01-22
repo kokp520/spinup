@@ -6,6 +6,8 @@ struct ListView: View {
     @Binding var selectedSection: WheelSection?
     @Environment(\.dismiss) var dismiss
 
+    @StateObject private var form = FormViewModel()
+
     var body: some View {
         NavigationView {
             List {
@@ -76,8 +78,16 @@ struct ListView: View {
 
                 trailing:
                 MenuButton(style: .text("新增")) {
+                    form.reset()
+                    form.isShowingAlert = true
                     selectedSection = nil
-                    isShowEditView = true
+                }.alert("新增項目", isPresented: $form.isShowingAlert) {
+                    TextField("名稱", text: $form.title)
+                    Button("取消", role: .cancel) {}
+                    Button("確定") {
+                        let newSection = form.createSection()
+                        viewModel.addSection(newSection)
+                    }
                 }
             )
         }

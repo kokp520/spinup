@@ -21,16 +21,34 @@ struct ContentView: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var spinButtonPressed = false
 
+//    @State private var isShowingAlert = false
+//    @State private var newTitle = ""
+//    @State private var newColor: Color = .random()
+    @StateObject private var formViewModel = FormViewModel()
+
     @State private var isShaking: Bool = false
+
+//    private var wheelForm: FormUtilities.WheelForm {
+//        FormUtilities.WheelForm(title: $newTitle, color: $newColor)
+//    }
 
     var body: some View {
         VStack {
             HStack {
                 MenuButton(style: .icon("plus")) {
+                    formViewModel.reset()
                     selectedSection = nil
-                    activeSheet = .edit
+                    formViewModel.isShowingAlert = true
                 }
                 .padding(.leading)
+                .alert("新增項目", isPresented: $formViewModel.isShowingAlert) {
+                    TextField("名稱", text: $formViewModel.title)
+                    Button("取消", role: .cancel) {}
+                    Button("確定") {
+                        let newSection = formViewModel.createSection()
+                        viewModel.addSection(newSection)
+                    }
+                }
 
                 Spacer()
 

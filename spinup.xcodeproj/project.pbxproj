@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		520639CB2D411E2F0084038C /* ToolBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520639CA2D411E2F0084038C /* ToolBox.swift */; };
+		520639CD2D41262E0084038C /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520639CC2D41262E0084038C /* FormViewModel.swift */; };
 		521FB9742D3F8D77008F21CB /* PixelWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521FB9732D3F8D77008F21CB /* PixelWheel.swift */; };
 		521FB9762D3F8F90008F21CB /* Pointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521FB9752D3F8F90008F21CB /* Pointer.swift */; };
 		521FB9782D3FE21F008F21CB /* SkinMangerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521FB9772D3FE21F008F21CB /* SkinMangerView.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		520639CA2D411E2F0084038C /* ToolBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBox.swift; sourceTree = "<group>"; };
+		520639CC2D41262E0084038C /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		521FB9722D3F8B2C008F21CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		521FB9732D3F8D77008F21CB /* PixelWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelWheel.swift; sourceTree = "<group>"; };
 		521FB9752D3F8F90008F21CB /* Pointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pointer.swift; sourceTree = "<group>"; };
@@ -73,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				52BD93E82D3AC61000980E14 /* MenuButton.swift */,
-				520639CA2D411E2F0084038C /* ToolBox.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -150,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				52EDF09D2C5129B9006B8698 /* WheelViewModel.swift */,
+				520639CC2D41262E0084038C /* FormViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -263,8 +263,8 @@
 				52EDF09C2C50C8AE006B8698 /* WheelView.swift in Sources */,
 				521FB9742D3F8D77008F21CB /* PixelWheel.swift in Sources */,
 				52EDF09A2C50C890006B8698 /* EditView.swift in Sources */,
+				520639CD2D41262E0084038C /* FormViewModel.swift in Sources */,
 				521FB9762D3F8F90008F21CB /* Pointer.swift in Sources */,
-				520639CB2D411E2F0084038C /* ToolBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +412,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adi.spinup121;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -444,7 +444,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adi.spinup121;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
