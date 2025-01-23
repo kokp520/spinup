@@ -14,7 +14,7 @@ enum ActiveSheet: Identifiable {
 }
 
 struct ContentView: View {
-    @ObservedObject var viewModel: WheelViewModel
+    @StateObject private var viewModel = WheelViewModel()
     @State private var activeSheet: ActiveSheet?
     @State private var selectedSection: WheelSection?
     @State private var rotation: Double = 0
@@ -164,5 +164,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(viewModel: WheelViewModel())
+    ContentView()
 }

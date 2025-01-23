@@ -57,18 +57,18 @@ struct ListView: View {
                 }
 
                 // section: donation
-                Section(header: Text("其他"), footer: Text("目前僅支援Apple Pay")) {
-                    Button(action: {
-                        // TODO: apple pay
-                        showApplePayAlert()
-                    }) {
-                        HStack {
-                            Text("支持開發者").foregroundColor(.blue)
-                            Spacer()
-                            Image(systemName: "heart.fill").foregroundColor(.pink)
-                        }
-                    }
-                }
+//                Section(header: Text("其他"), footer: Text("目前僅支援Apple Pay")) {
+//                    Button(action: {
+//                        // TODO: apple pay
+//                        showApplePayAlert()
+//                    }) {
+//                        HStack {
+//                            Text("支持開發者").foregroundColor(.blue)
+//                            Spacer()
+//                            Image(systemName: "heart.fill").foregroundColor(.pink)
+//                        }
+//                    }
+//                }
             }
             .navigationBarTitle("設定", displayMode: .inline)
             .navigationBarItems(
