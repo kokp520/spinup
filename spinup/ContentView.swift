@@ -32,6 +32,8 @@ struct ContentView: View {
 //        FormUtilities.WheelForm(title: $newTitle, color: $newColor)
 //    }
 
+    @State private var logError: Bool = false
+
     var body: some View {
         VStack {
             HStack {
@@ -46,9 +48,14 @@ struct ContentView: View {
                     Button("取消", role: .cancel) {}
                     Button("確定") {
                         let newSection = formViewModel.createSection()
-                        viewModel.addSection(newSection)
+                        if !viewModel.addSection(newSection) {
+                            logError = true
+                        }
                     }
                 }
+                .alert("提示", isPresented: $logError) {
+                    Button("確認", role: .cancel) {}
+                } message: { Text("操作失敗，請稍後再試！") }
 
                 Spacer()
 

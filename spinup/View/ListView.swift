@@ -33,7 +33,9 @@ struct ListView: View {
                             // 刪除按鈕
                             Button(action: {
                                 if let index = viewModel.sections.firstIndex(where: { $0.id == section.id }) {
-                                    viewModel.removeSection(at: index)
+                                    if !viewModel.removeSection(at: index) {
+                                        // todo: handle error
+                                    }
                                 }
                             }) {
                                 Text("刪除")
@@ -81,12 +83,15 @@ struct ListView: View {
                     form.reset()
                     form.isShowingAlert = true
                     selectedSection = nil
-                }.alert("新增項目", isPresented: $form.isShowingAlert) {
+                }
+                .alert("新增項目", isPresented: $form.isShowingAlert) {
                     TextField("名稱", text: $form.title)
                     Button("取消", role: .cancel) {}
                     Button("確定") {
                         let newSection = form.createSection()
-                        viewModel.addSection(newSection)
+                        if viewModel.addSection(newSection) {
+                            // TODO: 追加錯誤處理
+                        }
                     }
                 }
             )

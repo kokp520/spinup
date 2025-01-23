@@ -26,7 +26,6 @@
 		52EDF0A02C520287006B8698 /* ModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EDF09F2C520287006B8698 /* ModelExtension.swift */; };
 		52F213F22D3945FA004F69B1 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213F12D3945FA004F69B1 /* ListView.swift */; };
 		52F213F72D395454004F69B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213F62D395454004F69B1 /* Config.swift */; };
-		52F213F92D396584004F69B1 /* 1.md in Resources */ = {isa = PBXBuildFile; fileRef = 52F213F82D396584004F69B1 /* 1.md */; };
 		52F213FB2D3965D3004F69B1 /* SpinWheelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213FA2D3965D3004F69B1 /* SpinWheelData.swift */; };
 		52F213FD2D3965E7004F69B1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F213FC2D3965E7004F69B1 /* DataManager.swift */; };
 /* End PBXBuildFile section */
@@ -52,7 +51,6 @@
 		52EDF09F2C520287006B8698 /* ModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExtension.swift; sourceTree = "<group>"; };
 		52F213F12D3945FA004F69B1 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		52F213F62D395454004F69B1 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		52F213F82D396584004F69B1 /* 1.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = 1.md; sourceTree = SOURCE_ROOT; };
 		52F213FA2D3965D3004F69B1 /* SpinWheelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinWheelData.swift; sourceTree = "<group>"; };
 		52F213FC2D3965E7004F69B1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,7 +78,6 @@
 		52EDF07F2C50C4C5006B8698 = {
 			isa = PBXGroup;
 			children = (
-				52F213F82D396584004F69B1 /* 1.md */,
 				52F213F02D3916EE004F69B1 /* Assets */,
 				52EDF08A2C50C4C5006B8698 /* spinup */,
 				52EDF0892C50C4C5006B8698 /* Products */,
@@ -237,7 +234,6 @@
 				527DBBF12C528DEF004FC18C /* spin.wav in Resources */,
 				52EDF0932C50C4C6006B8698 /* Preview Assets.xcassets in Resources */,
 				527DBBF52C5293F0004FC18C /* cat.jpg in Resources */,
-				52F213F92D396584004F69B1 /* 1.md in Resources */,
 				52EDF0902C50C4C6006B8698 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +393,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"spinup/Preview Content\"";
 				DEVELOPMENT_TEAM = 2XMTD5UT4S;
 				ENABLE_PREVIEWS = YES;
@@ -412,7 +408,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adi.spinup121;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -429,7 +425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"spinup/Preview Content\"";
 				DEVELOPMENT_TEAM = 2XMTD5UT4S;
 				ENABLE_PREVIEWS = YES;
@@ -444,7 +440,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adi.spinup121;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

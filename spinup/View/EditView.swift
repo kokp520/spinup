@@ -6,12 +6,14 @@ struct EditView: View {
     @Binding var section: WheelSection?
 
     @State private var title: String = ""
-    @State private var color: Color = Color(
+    @State private var color: Color = .init(
         red: Double.random(in: 0...1),
         green: Double.random(in: 0...1),
         blue: Double.random(in: 0...1)
     )
-    
+
+    @State private var logError: Bool = false
+
     var body: some View {
         NavigationView {
             Form {
@@ -35,16 +37,22 @@ struct EditView: View {
                     color = s.color
                 }
             }
+            .alert("提示", isPresented: $logError) {
+                Button("確定", role: .cancel) {}
+            } message: {
+                Text("操作失敗，請稍後再試！")
+            }
         }
     }
-    
+
     private func save() {
         if let s = section {
             let updateModel = WheelSection(id: s.id, title: title, color: color)
-            viewModel.updateSection(updateModel)
-        } else {
-            let newModel = WheelSection(id: UUID(), title: title, color: color)
-            viewModel.addSection(newModel)
+            if !viewModel.updateSection(updateModel) {
+                logError = true
+            } else {
+                dismiss()
+            }
         }
     }
 }
