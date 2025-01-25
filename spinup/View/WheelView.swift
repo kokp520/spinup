@@ -8,6 +8,12 @@ struct WheelView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
+                // 外圍白邊框
+                Circle()
+                    .stroke(Color.white, lineWidth: 10)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 5) // 增加些許陰影效果
+
                 // 背景陰影（環繞轉盤）
                 Circle()
                     .fill(
@@ -121,7 +127,7 @@ struct WheelView: View {
     }
 }
 
-//struct WheelView_Previews: PreviewProvider {
+// struct WheelView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        WheelView(
 //            sections: [
@@ -135,8 +141,7 @@ struct WheelView: View {
 //        )
 //        .frame(width: 300, height: 300)
 //    }
-//}
-
+// }
 
 // new preview
 #Preview {

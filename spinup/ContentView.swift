@@ -77,10 +77,10 @@ struct ContentView: View {
                     .blur(radius: 10)
                     .offset(y: Config.Wheel.offset)
 
-                PixelWheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
-                    .frame(width: 300, height: 380)
-                    .rotationEffect(.degrees(rotation))
-                    .offset(y: Config.Wheel.offset)
+//                PixelWheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
+//                    .frame(width: 300, height: 380)
+//                    .rotationEffect(.degrees(rotation))
+//                    .offset(y: Config.Wheel.offset)
 
                 // 其他種wheel
                 WheelView(sections: viewModel.sections, totalRotation: rotation, isShaking: isShaking)
@@ -92,6 +92,18 @@ struct ContentView: View {
                     .frame(width: 20, height: 100)
                     .offset(y: -150 + Config.Wheel.offset)
             }
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        // 用戶拖動時的邏輯，可根據需要調整轉盤的視覺效果
+                        let dragAmount = value.translation.height
+                        rotation += dragAmount / 10 // 模擬轉盤旋轉
+                    }
+                    .onEnded { _ in
+                        // 手勢結束時，觸發 spinWheel 功能
+                        spinWheel()
+                    }
+            )
 
             Button(action: spinWheel) {
                 Text("Spin up")
